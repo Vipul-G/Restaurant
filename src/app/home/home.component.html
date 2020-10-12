@@ -1,0 +1,20 @@
+  <mat-grid-list rowHeight="1:1" cols="4">
+    <mat-grid-tile *ngFor="let restaurant of restaurants$ | async" >
+      <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>{{restaurant.name}}</mat-card-title>
+            <mat-card-subtitle>{{restaurant.address.state}}, {{restaurant.address.city}}</mat-card-subtitle>
+        </mat-card-header>
+
+          <img mat-card-image [src]="restaurant.image" [alt]="restaurant.name">
+
+        <mat-card-actions>
+            <a mat-button [routerLink]="['/view']" [state]="{id: restaurant._id}">See More</a>
+            <a mat-button [routerLink]="['/addRestaurant']" [state]="{ mode:'edit', id:restaurant._id}">Edit</a>
+            <button mat-button (click)="deleteRestaurantById(restaurant._id)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+

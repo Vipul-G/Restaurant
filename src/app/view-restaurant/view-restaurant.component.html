@@ -1,0 +1,22 @@
+<mat-grid-list cols="2" rowHeight="2:2">
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{restaurant.name}}</mat-card-title>
+        <mat-card-subtitle>{{restaurant.address.state}}, {{restaurant.address.city}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="restaurant.image" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          Located in: Jawaharlal Nehru University
+          Address: JNU Campus Rd, Saraswatipuram, Jawaharlal Nehru University, New Delhi, Delhi 110067
+          Hours:
+          Open ⋅ Closes 3AM
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Add Food</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

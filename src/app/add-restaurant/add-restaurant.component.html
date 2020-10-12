@@ -1,0 +1,40 @@
+<mat-card>
+    <form class="example-form" [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Restaurant Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <div>
+            <button type="button" mat-stroked-button (click)="imagePicker.click()">Pick Image</button>
+            <input type="file" #imagePicker (change)="onImagePick($event)">
+        </div>
+        <div class="image" *ngIf="imagePreview !== '' && imagePreview">
+            <img [src]="imagePreview" [alt]="restaurantForm.value.name">
+        </div>
+        <mat-card formGroupName="address">
+            <h5>Address</h5>
+            <!-- <mat-form-field class="example-full-width">
+                <mat-label>State</mat-label>
+                <input matInput formControlName="state">
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>State</mat-label>
+              <mat-select formControlName="state">
+                <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city">
+            </mat-form-field>
+
+        </mat-card>
+
+
+
+        <div *ngIf="mode==='add'; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock><button mat-button type="submit">Save</button></ng-template>
+        <ng-template #elseBlock><button mat-button type="submit">Update</button></ng-template>
+    </form>
+</mat-card>
